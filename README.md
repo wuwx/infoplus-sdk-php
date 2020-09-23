@@ -1,1 +1,1 @@
-# infoplus-sdk
+# infoplus-sdk-php
