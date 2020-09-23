@@ -16,9 +16,9 @@ class ClientTest extends TestCase
         $dotenv->load();
 
         $this->app = new Application([
-            "base_uri"   => $_ENV["INFOPLUS_BASE_URI"],
-            "app_id"     => $_ENV["INFOPLUS_APP_ID"],
-            "app_secret" => $_ENV["INFOPLUS_APP_SECRET"],
+            "base_uri"      => $_ENV["INFOPLUS_BASE_URI"],
+            "client_id"     => $_ENV["INFOPLUS_CLIENT_ID"],
+            "client_secret" => $_ENV["INFOPLUS_CLIENT_SECRET"],
         ]);
     }
 

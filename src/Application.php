@@ -31,6 +31,14 @@ class Application extends Container
         $this['position.user'] = function ($app) {
             return new Position\User\Client($app);
         };
+
+        $this['process'] = function ($app) {
+            return new Process\Client($app);
+        };
+
+        $this['task'] = function ($app) {
+            return new Task\Client($app);
+        };
     }
 
     public function __get($name)

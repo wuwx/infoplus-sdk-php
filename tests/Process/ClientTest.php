@@ -1,5 +1,5 @@
 <?php
-namespace Wuwx\InfoPlus\Tests\Position\User;
+namespace Wuwx\InfoPlus\Tests\Process;
 
 use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +11,7 @@ class ClientTest extends TestCase
 
     public function setUp(): void
     {
-        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 3));
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
         $dotenv->load();
 
         $this->app = new Application([
@@ -23,9 +23,20 @@ class ClientTest extends TestCase
 
     public function testCreate()
     {
-        $response = $this->app["position.user"]->create("032700:9", [
-            "code" => "wqnpmzhynxzloavvhj7j",
+        $response = $this->app["process"]->create([
+            "code" => "wuwx_test",
+            "userId" => "wqnpmzhynxzloavvhj7j",
+            "data" => json_encode([
+                "fieldYY" => "测试",
+            ]),
         ]);
+
+        $this->assertEquals("SUCCEED", data_get($response, "ecode"));
+    }
+
+    public function testFind()
+    {
+        $response = $this->app["process"]->find(6807);
 
         $this->assertEquals("SUCCEED", data_get($response, "ecode"));
     }

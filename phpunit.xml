@@ -3,5 +3,14 @@
         <testsuite name="Triple">
             <directory>tests/Triple</directory>
         </testsuite>
+        <testsuite name="Position">
+            <directory>tests/Position</directory>
+        </testsuite>
+        <testsuite name="Process">
+            <directory>tests/Process</directory>
+        </testsuite>
+        <testsuite name="Task">
+            <directory>tests/Task</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

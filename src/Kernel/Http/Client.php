@@ -50,10 +50,13 @@ class Client
 
     public function getToken()
     {
-        $response = Zttp::withoutVerifying()
-            ->withBasicAuth($this->app['config']['app_id'], $this->app['config']['app_secret'])
-            ->asFormParams()
-            ->post($this->app['config']['base_uri'] . "/oauth2/token?grant_type=client_credentials");
+        $response = Zttp::withoutVerifying()->asFormParams()
+            ->post($this->app['config']['base_uri'] . "/oauth2/token", [
+                "client_id" => $this->app['config']['client_id'],
+                "client_secret" => $this->app['config']['client_secret'],
+                "grant_type"=> "client_credentials",
+                "scope" => "sys_start sys_process sys_submit sys_triple sys_triple_edit"
+            ]);
 
         $access_token = data_get($response->json(), "access_token");
 
